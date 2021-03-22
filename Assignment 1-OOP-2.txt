@@ -1,0 +1,200 @@
+using System;
+
+namespace MidAssignment1
+{
+    class Address
+    {
+        private string roadNo;
+        private string houseNo;
+        private string city;
+        private string country;
+
+        public string RoadNo
+        {
+            get { return roadNo; }
+            set { roadNo = value; }
+        }
+
+        public string HouseNo
+        {
+            get { return houseNo; }
+            set { houseNo = value; }
+        }
+
+        public string City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+
+        public string Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
+
+        public Address(string road, string house, string ct, string cntry)
+        {
+            RoadNo = road;
+            HouseNo = house;
+            City = ct;
+            Country = cntry;
+        }
+        public void GetAddress()
+        {
+            Console.WriteLine("Road No:" + Convert.ToInt32(RoadNo));
+            Console.WriteLine("House No:" + Convert.ToInt32(HouseNo));
+            Console.WriteLine("City:" + City);
+            Console.WriteLine("Country:" + Country);
+        }
+
+    }
+
+    class Account
+    {
+        private int accountNumber;
+        private string accountName;
+        private double balance;
+        private Address address;
+
+        public int AccountNumber
+        {
+            get { return accountNumber; }
+            set { accountNumber = value; }
+        }
+
+        public string AccountName
+        {
+            get { return accountName; }
+            set { accountName = value; }
+        }
+        public double Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+        public Address Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+
+        public void Withdraw(double amount)
+        {
+            double x = Balance - amount;
+            Console.WriteLine("After Dithdraw New Balance:" + x);
+        }
+
+        public void Deposit(double amount)
+        {
+            double y = Balance + amount;
+            Console.WriteLine("After Deposit New Balance:" + y);
+        }
+
+        public void Transfer(double amount)
+        {
+            double z = Balance - amount;
+            Console.WriteLine("After Transfer New Balance:" + z);
+        }
+        public void ShowAccountInfotrmation()
+        {
+            Console.WriteLine("<==Account Information==>");
+            Console.WriteLine("Account Number:" + AccountNumber);
+            Console.WriteLine("Account Name:" + AccountName);
+            Console.WriteLine("Balance:" + Balance);
+        }
+    }
+    class Bank
+    {
+        private string bankName;
+        private Account myBank;
+        private int accountNumber;
+        private string accountName;
+        private double balance;
+
+        public string BankName
+        {
+            get { return bankName; }
+            set { bankName = value; }
+        }
+
+        public Account MyBank
+        {
+            get { return myBank; }
+            set { myBank = value; }
+        }
+
+        public int AccountNumber
+        {
+            get { return accountNumber; }
+            set { accountNumber = value; }
+        }
+
+        public string AccountName
+        {
+            get { return accountName; }
+            set { accountName = value; }
+        }
+        public double Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+
+        public void AddAccount()
+        {
+            Console.WriteLine("Enter a new Account Number:");
+            int k = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("New Account Number:" + k);
+        }
+
+        public void DeleteAccount(int accountNumber )
+        {
+            Console.WriteLine( "This Account " + accountNumber + " Successfully Deleted!");
+        }
+
+        public void PrintAccountDetails()
+        {
+            Console.WriteLine("<==New Account Details==>");
+            Console.WriteLine("Bank Name:" + BankName);
+            Console.WriteLine("Account Name:" + AccountName);
+            Console.WriteLine("Balance Deposite:" + Balance);
+        }
+
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Address Nur = new Address("20", "15", "Mirpur", "Bangladesh");
+            Nur.GetAddress();
+            Console.WriteLine("Enter Account Number:");
+            int p = Convert.ToInt32(Console.ReadLine());
+
+            Account Alam = new Account();
+            Alam.AccountNumber = p;
+            Alam.AccountName = "Md Sumon Khan";
+            Alam.Balance = 5000;
+            Alam.ShowAccountInfotrmation();
+            Alam.Withdraw(500);
+            Alam.Deposit(300);
+            Alam.Transfer(2300);
+
+            Bank Polash = new Bank();
+            Polash.BankName = "Sonali Bank";
+            Polash.AddAccount();
+            Console.WriteLine("Enter New Account Name:");
+            string l = Console.ReadLine();
+            Polash.AccountName = l;
+            Console.WriteLine("Enter New Deposite Money:");
+            int m = Convert.ToInt32(Console.ReadLine());
+            Polash.Balance = m;
+            Polash.PrintAccountDetails();
+            Console.WriteLine("Delete Account Number:");
+            int q = Convert.ToInt32(Console.ReadLine());
+            Polash.DeleteAccount(q);
+
+        }       
+    }
+}
